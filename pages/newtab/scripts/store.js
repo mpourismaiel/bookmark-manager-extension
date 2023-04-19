@@ -1,3 +1,5 @@
+const stores = {};
+
 const store = (initial = {}, key) => {
   const subscribers = [];
   let data = initial;
@@ -36,7 +38,12 @@ const store = (initial = {}, key) => {
     fn(data);
   };
 
-  return { set, get, subscribe };
+  stores[key] = { set, get, subscribe };
+  return stores[key];
 };
 
-module.exports = store;
+const getStore = (key) => {
+  return stores[key];
+};
+
+module.exports = { store, getStore };

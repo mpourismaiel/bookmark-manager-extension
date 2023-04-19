@@ -6,6 +6,24 @@ button:active {
   @apply outline-none;
 }
 
+.separator {
+  --separator-gap: 1rem;
+  @apply flex items-center text-sm my-4 text-gray-200;
+}
+
+.separator::before, .separator::after {
+  content: '';
+  @apply flex-grow h-px bg-gray-500;
+}
+
+.separator::before {
+  margin-right: var(--separator-gap);
+}
+
+.separator::after {
+  margin-left: var(--separator-gap);
+}
+
 body {
   @apply bg-[#121212] flex items-center flex-col;
 }
@@ -290,4 +308,16 @@ body {
 
 #auth-modal {
   @apply flex flex-col rounded p-4 shadow-lg bg-gray-900 w-[600px];
+}
+
+#login-uuid-container {
+  @apply text-gray-300 text-lg flex items-center justify-center flex-col gap-2;
+}
+
+#login-uuid-container #login-uuid {
+  @apply bg-green-900 text-white rounded p-2 font-bold ml-2 transition-all duration-200 ease-out;
+}
+
+#login-uuid-container #login-uuid.loading {
+  @apply text-gray-400;
 }

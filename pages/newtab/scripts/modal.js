@@ -1,5 +1,5 @@
 const { setupForms, removeForms, stopPropagation } = require("./forms");
-const { removeTabs, setupTabs } = require("./tabs");
+const { setupTabs } = require("./tabs");
 
 const modalBackdrop = document.querySelector("#backdrop");
 
@@ -32,4 +32,4 @@ const hideModal = async () => {
   removeForms(modalBackdrop);
 };
 
-module.exports = { showModal, hideModal };
+module.exports = { showModal, hideModal, modalBackdrop };

@@ -1,7 +1,7 @@
 const sortable = require("sortablejs");
 
 const handlebars = require("./handlebars");
-const store = require("./store");
+const { store } = require("./store");
 const { shortcutsDefault } = require("./constants");
 
 const shortcutsContainer = document.querySelector("#shortcuts");

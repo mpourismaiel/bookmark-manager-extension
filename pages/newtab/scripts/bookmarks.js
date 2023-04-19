@@ -1,4 +1,4 @@
-const store = require("./store");
+const { store } = require("./store");
 
 const bookmarksContainer = document.querySelector("#bookmarks");
 const bookmarksEmptyTemplate = document.querySelector(

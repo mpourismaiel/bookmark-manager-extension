@@ -8,10 +8,11 @@
     "css:watch:index": "npm run css:build:index -- --watch",
     "css:build:popup": "tailwindcss -i ./pages/popup/popup.css -o ./pages/popup/build/popup.build.css",
     "css:watch:popup": "npm run css:build:popup -- --watch",
-    "js:build:index": "esbuild pages/newtab/scripts/index.js --bundle --minify --sourcemap --outfile=pages/newtab/build/index.build.js",
-    "js:watch:index": "npm run js:build:index -- --watch",
+    "js:build:index": "NODE_ENV=production node ./pages/newtab/esbuild.js",
+    "js:watch:index": "node ./pages/newtab/esbuild.js",
     "js:build:popup": "esbuild pages/popup/popup.js --bundle --minify --sourcemap --outfile=pages/popup/build/popup.build.js",
     "js:watch:popup": "npm run js:build:popup -- --watch",
+    "dev:index": "concurrently --names \"css,js\" --prefix \"{name}\" --prefix-colors \"blue,green\" \"npm run css:watch:index\" \"npm run js:watch:index\"",
     "hbs:build:index": "handlebars pages/newtab/templates -f pages/newtab/build/templates.js"
   },
   "keywords": [],
@@ -19,12 +20,15 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.14",
+    "concurrently": "^8.0.1",
     "esbuild": "^0.17.16",
     "handlebars": "^4.7.7",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1"
   },
   "dependencies": {
+    "browserslist": "^4.21.5",
+    "dotenv": "^16.0.3",
     "fuse.js": "^6.6.2",
     "sortablejs": "^1.15.0"
   }

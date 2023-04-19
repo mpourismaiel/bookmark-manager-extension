@@ -4,24 +4,20 @@
   data-modal=""
   data-tab-container="auth"
 >
-  <div class="tabs">
-    <button class="active" data-tab="login">Login</button>
-    <button data-tab="register">Register</button>
-  </div>
-  <div class="tab" data-tab="login">
-    <form id="login-form" data-form>
-      <div class="field">
-        <label for="login-uuid">UUID or Username</label>
-        <input type="text" id="login-uuid" placeholder="Please enter your UUID or Username" name="uuid" />
-      </div>
-      <div class="field">
-        <label for="login-password">Password</label>
-        <input type="password" id="login-password" placeholder="Please enter your password if you have one" name="password" />
-      </div>
-      <div class="field-submit">
-        <button type="submit">Submit</button>
-      </div>
-    </form>
-  </div>
-  <div class="tab" data-tab="register"></div>
+  <form id="login-form" data-form>
+    <h3 id="login-uuid-container"><span>Your UUID is:</span><span id="login-uuid"></span></h3>
+    <div class="separator">or Login</div>
+    <div class="field">
+      <label for="login-username">Username or UUID</label>
+      <input type="text" id="login-username" placeholder="Please enter your username or UUID" name="username" />
+    </div>
+    <div class="field">
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" placeholder="Please enter your password if you have one" name="password" />
+    </div>
+    <div class="error"><p></p></div>
+    <div class="field-submit">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
 </div>
