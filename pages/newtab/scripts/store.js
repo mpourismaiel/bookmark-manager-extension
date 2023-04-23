@@ -1,6 +1,6 @@
 const stores = {};
 
-const store = (initial = {}, key) => {
+const store = (initial = {}, key = "", compute = null) => {
   const subscribers = [];
   let data = initial;
 
@@ -23,10 +23,19 @@ const store = (initial = {}, key) => {
 
   const set = (newData) => {
     data = newData;
+    if (compute) {
+      data = compute(data);
+    }
+
     if (key) {
       localStorage.setItem(key, JSON.stringify(data));
     }
+
     emit();
+  };
+
+  const update = (newData) => {
+    set({ ...data, ...newData });
   };
 
   const get = () => {
@@ -38,7 +47,7 @@ const store = (initial = {}, key) => {
     fn(data);
   };
 
-  stores[key] = { set, get, subscribe };
+  stores[key] = { set, get, subscribe, compute, update };
   return stores[key];
 };
 

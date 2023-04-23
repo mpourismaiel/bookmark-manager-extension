@@ -2,12 +2,15 @@ const { showModal, modalBackdrop, hideModal } = require("./modal");
 const { store } = require("./store");
 const handlebars = require("./handlebars");
 const { querySelector } = require("./dynamic");
-const { preventDefault } = require("./forms");
+const { preventDefault, formValues } = require("./forms");
 
 const loginButton = document.querySelector("#menu");
-const loginUUID = querySelector("#login-uuid", modalBackdrop);
-const loginError = querySelector("#login-form .error p", modalBackdrop);
 const loginForm = querySelector("#login-form", modalBackdrop);
+const registerForm = querySelector("#register-form", modalBackdrop);
+const registerNavigateButton = querySelector("#register-button", modalBackdrop);
+const loginNavigateButton = querySelector("#login-button", modalBackdrop);
+const proceedNavigationButton = querySelector("#proceed", modalBackdrop);
+const backNavigationButton = querySelector("#back", modalBackdrop);
 
 const {
   get: getUser,
@@ -18,77 +21,107 @@ const {
 const {
   get: getRequestState,
   set: setRequestState,
+  update: updateRequestState,
   subscribe: subscribeRequestState,
-} = store({ loading: false, error: "" });
-
-loginButton.addEventListener("click", async () => {
-  await showModal(handlebars.templates["auth-modal"]());
-
-  if (getUser().uuid) {
-    loginUUID().innerHTML = getUser().uuid;
-  } else {
-    await registerUser();
-  }
-
-  loginForm.addEventListener("submit", preventDefault(loginUser));
+} = store({
+  isShowingModal: false,
+  loading: false,
+  error: "",
+  uuid: "",
+  createdAccount: false,
+  isCreatingAccount: false,
+  isLoggingIn: false,
 });
 
-const loginUser = async () => {
-  if (!formValues["login-form"].values.username) {
-    setRequestState({ loading: false, error: "Username or UUID is required" });
+subscribeRequestState(async (state) => {
+  if (!state.isShowingModal) {
+    hideModal();
     return;
   }
 
-  setRequestState({ loading: true, error: "" });
+  hideModal();
+  await showModal(handlebars.templates["auth-modal"](state));
+
+  loginNavigateButton((node) =>
+    node.addEventListener("click", () =>
+      setRequestState({ isShowingModal: true, isLoggingIn: true })
+    )
+  );
+  registerNavigateButton((node) =>
+    node.addEventListener("click", () =>
+      setRequestState({ isShowingModal: true, isCreatingAccount: true })
+    )
+  );
+  proceedNavigationButton((node) =>
+    node.addEventListener("click", () =>
+      setRequestState({ isShowingModal: false })
+    )
+  );
+  backNavigationButton((node) =>
+    node.addEventListener("click", () =>
+      setRequestState({
+        isShowingModal: true,
+      })
+    )
+  );
+  loginForm((node) =>
+    node.addEventListener("submit", preventDefault(loginUser))
+  );
+  registerForm((node) =>
+    node.addEventListener("submit", preventDefault(registerUser))
+  );
+});
+
+loginButton.addEventListener("click", async () => {
+  setRequestState({ isShowingModal: true });
+});
+
+const loginUser = async () => {
+  updateRequestState({ loading: true, error: "" });
+  const { username, password } = formValues["login-form"].values;
   const response = await fetch(`${process.env.API_URL}/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(formValues["login-form"].values),
+    body: JSON.stringify({
+      username,
+      password,
+    }),
   });
 
-  const result = await response.json();
-  setRequestState({ loading: false, error: "" });
-  setUser(result);
-  loginUUID().innerHTML = result.uuid;
-  hideModal();
+  if (response.ok) {
+    const { uuid, token } = await response.json();
+    setRequestState({ isShowingModal: false });
+    setUser({ uuid, username, token });
+  } else {
+    updateRequestState({ error: (await response.json()).error });
+  }
+  updateRequestState({ loading: false });
 };
 
 const registerUser = async () => {
+  updateRequestState({ loading: true, error: "" });
+  const { username, password } = formValues["register-form"].values;
   const response = await fetch(`${process.env.API_URL}/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
   });
 
-  setRequestState({ loading: true, error: "" });
-  const result = await response.json();
-  setRequestState({ loading: false, error: "" });
-  loginUUID().innerHTML = result.uuid;
-
-  setUser(result);
-};
-
-subscribeRequestState(({ loading, error }) => {
-  if (!loginUUID()) {
-    return;
-  }
-
-  loginError().innerHTML = "";
-
-  if (loading) {
-    loginUUID().innerHTML = "Loading...";
-    loginUUID().classList.add("loading");
+  if (response.ok) {
+    const { uuid, token } = await response.json();
+    setUser({ uuid, username, token });
+    updateRequestState({ createdAccount: true, uuid });
   } else {
-    loginUUID().innerHTML = "";
-    loginUUID().classList.remove("loading");
+    updateRequestState({ error: (await response.json()).error });
   }
-
-  if (error) {
-    loginError().innerHTML = error;
-  }
-});
+  updateRequestState({ loading: false });
+};
 
 module.exports = { subscribeUser };

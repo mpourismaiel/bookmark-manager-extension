@@ -1,6 +1,18 @@
 const querySelector =
   (selector, scope = document) =>
-  () =>
-    scope.querySelector(selector);
+  (fn) => {
+    const element = scope.querySelector(selector);
+    if (element) return fn(element);
+    return null;
+  };
 
-module.exports = { querySelector };
+async function observeElementChanges(fn) {
+  const result = fn();
+  if (result) return result;
+
+  await new Promise((resolve) => requestAnimationFrame(resolve));
+
+  return observeElementChanges(fn);
+}
+
+module.exports = { querySelector, observeElementChanges };

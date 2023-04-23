@@ -2901,6 +2901,7 @@ body {
 
 #login-uuid-container #login-uuid {
   margin-left: 0.5rem;
+  margin-bottom: 1rem;
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
   background-color: rgb(20 83 45 / var(--tw-bg-opacity));
@@ -2908,15 +2909,56 @@ body {
   font-weight: 700;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-#login-uuid-container #login-uuid.loading {
+#auth-modal .signup-message p {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#auth-modal .signup-message p, #auth-modal .disclaimer {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+#auth-modal .disclaimer {
+  margin-bottom: 1rem;
+}
+
+#auth-modal .navigation-button, #auth-modal #proceed {
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+#auth-modal #proceed, #auth-modal #register-button {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+}
+
+#auth-modal #login-button {
+  --tw-bg-opacity: 1;
+  background-color: rgb(5 150 105 / var(--tw-bg-opacity));
+  font-weight: 700;
+}
+
+#auth-modal .actions-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#auth-modal #back {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 @media (min-width: 640px) {

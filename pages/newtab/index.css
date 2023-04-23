@@ -315,9 +315,37 @@ body {
 }
 
 #login-uuid-container #login-uuid {
-  @apply bg-green-900 text-white rounded p-2 font-bold ml-2 transition-all duration-200 ease-out;
+  @apply bg-green-900 text-white rounded p-2 font-bold ml-2 mb-4;
 }
 
-#login-uuid-container #login-uuid.loading {
-  @apply text-gray-400;
+#auth-modal .signup-message p {
+  @apply text-center mb-4;
+}
+
+#auth-modal .signup-message p, #auth-modal .disclaimer {
+  @apply text-gray-400 text-lg;
+}
+
+#auth-modal .disclaimer {
+  @apply mb-4;
+}
+
+#auth-modal .navigation-button, #auth-modal #proceed {
+  @apply py-2 rounded text-white text-lg;
+}
+
+#auth-modal #proceed, #auth-modal #register-button {
+  @apply bg-sky-600;
+}
+
+#auth-modal #login-button {
+  @apply font-bold bg-emerald-600;
+}
+
+#auth-modal .actions-container {
+  @apply flex justify-start;
+}
+
+#auth-modal #back {
+  @apply text-gray-500 text-lg mb-4;
 }

@@ -3,8 +3,73 @@
 templates['add-shortcut-modal'] = template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<div\n  id=\"add-shortcut-modal\"\n  class=\"hide\"\n  data-modal=\"\"\n  data-tab-container=\"add-shortcut\"\n>\n  <h3>Add new shortcut</h3>\n  <div class=\"tabs\">\n    <button class=\"active\" data-tab=\"new\">Create new shortcut</button>\n    <button data-tab=\"link\">Link to another shortcut</button>\n  </div>\n  <div class=\"tab\" data-tab=\"new\">\n    <form id=\"add-shortcut-form\" data-form>\n      <div class=\"field\">\n        <label for=\"shortcut-new-title\">Title</label>\n        <input\n          type=\"text\"\n          id=\"shortcut-new-title\"\n          placeholder=\"Eg. Reddit\"\n          name=\"title\"\n        />\n      </div>\n      <div class=\"field\">\n        <label for=\"shortcut-new-link\">Link</label>\n        <input\n          type=\"text\"\n          id=\"shortcut-new-link\"\n          placeholder=\"Eg. reddit.com\"\n          name=\"link\"\n        />\n      </div>\n      <div class=\"field\">\n        <label for=\"shortcut-new-icon\">Icon</label>\n        <input\n          type=\"text\"\n          id=\"shortcut-new-icon\"\n          placeholder=\"Link to the favicon, I have to optimize this somehow\"\n          name=\"icon\"\n        />\n      </div>\n      <div class=\"field-submit\">\n        <button type=\"submit\">Submit</button>\n      </div>\n    </form>\n  </div>\n  <div class=\"tab hide\" data-tab=\"link\">\n    <form id=\"add-shortcut-form-related\" data-form>\n      <div class=\"field\">\n        <label for=\"shortcut-related\">Related shortcut</label>\n        <select id=\"shortcut-related\" name=\"parent\"></select>\n      </div>\n      <div class=\"field\">\n        <label for=\"shortcut-related-title\">Title</label>\n        <input\n          type=\"text\"\n          id=\"shortcut-related-title\"\n          placeholder=\"Eg. Reddit\"\n          name=\"title\"\n        />\n      </div>\n      <div class=\"field\">\n        <label for=\"shortcut-related-link\">Link</label>\n        <input\n          type=\"text\"\n          id=\"shortcut-related-link\"\n          placeholder=\"Eg. reddit.com\"\n          name=\"link\"\n        />\n      </div>\n      <div class=\"field-submit\">\n        <button type=\"submit\">Submit</button>\n      </div>\n    </form>\n  </div>\n</div>\n";
 },"useData":true});
-templates['auth-modal'] = template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<div\n  id=\"auth-modal\"\n  class=\"hide\"\n  data-modal=\"\"\n  data-tab-container=\"auth\"\n>\n  <form id=\"login-form\" data-form>\n    <h3 id=\"login-uuid-container\">Your UUID is <span id=\"login-uuid\"></span></h3>\n    <div class=\"separator\">or Login</div>\n    <div class=\"field\">\n      <label for=\"login-username\">Username or UUID</label>\n      <input type=\"text\" id=\"login-username\" placeholder=\"Please enter your username or UUID\" name=\"username\" />\n    </div>\n    <div class=\"field\">\n      <label for=\"login-password\">Password</label>\n      <input type=\"password\" id=\"login-password\" placeholder=\"Please enter your password if you have one\" name=\"password\" />\n    </div>\n    <div class=\"error\"><p></p></div>\n    <div class=\"field-submit\">\n      <button type=\"submit\">Submit</button>\n    </div>\n  </form>\n</div>\n";
+templates['auth-modal'] = template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "    <div class=\"signup-message\">\n      <p>Your account is created. You can access your account using your username</p>\n      <div id=\"login-uuid-container\"><span>Or use this UUID:</span><span id=\"login-uuid\">"
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"uuid") || (depth0 != null ? lookupProperty(depth0,"uuid") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"uuid","hash":{},"data":data,"loc":{"start":{"line":10,"column":89},"end":{"line":10,"column":97}}}) : helper)))
+    + "</span></div>\n      <p>You will need your password to login if you have set it. You can set a password later as well.</p>\n      <div class=\"field-submit\">\n        <button id=\"proceed\">Proceed</button>\n      </div>\n    </div>\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return ((stack1 = lookupProperty(helpers,"if").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"isCreatingAccount") : depth0),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.program(6, data, 0),"data":data,"loc":{"start":{"line":16,"column":4},"end":{"line":78,"column":4}}})) != null ? stack1 : "");
+},"4":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "    <div class=\"actions-container\">\n      <button id=\"back\">Go Back</button>\n    </div>\n    <form id=\"register-form\" data-form>\n      <div class=\"field\">\n        <label for=\"username\">Username</label>\n        <input\n          type=\"text\"\n          name=\"username\"\n          id=\"username\"\n          placeholder=\"Username\"\n        />\n      </div>\n      <div class=\"field\">\n        <label for=\"password\">Password</label>\n        <input\n          type=\"password\"\n          name=\"password\"\n          id=\"password\"\n          placeholder=\"Password\"\n        />\n      </div>\n      <div class=\"error\"><p>"
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"error") || (depth0 != null ? lookupProperty(depth0,"error") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"error","hash":{},"data":data,"loc":{"start":{"line":39,"column":28},"end":{"line":39,"column":37}}}) : helper)))
+    + "</p></div>\n      <div class=\"field-submit\">\n        <button type=\"submit\" id=\"login-submit\">Register</button>\n      </div>\n    </form>\n";
+},"6":function(container,depth0,helpers,partials,data) {
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return ((stack1 = lookupProperty(helpers,"if").call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? lookupProperty(depth0,"isLoggingIn") : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.program(9, data, 0),"data":data,"loc":{"start":{"line":44,"column":4},"end":{"line":78,"column":4}}})) != null ? stack1 : "");
+},"7":function(container,depth0,helpers,partials,data) {
+    var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "    <div class=\"actions-container\">\n      <button id=\"back\">Go Back</button>\n    </div>\n    <form id=\"login-form\" data-form>\n      <div class=\"field\">\n        <label for=\"username\">Username or UUID</label>\n        <input\n          type=\"text\"\n          name=\"username\"\n          id=\"username\"\n          placeholder=\"Username or UUID\"\n          required\n        />\n      </div>\n      <div class=\"field\">\n        <label for=\"password\">Password</label>\n        <input\n          type=\"password\"\n          name=\"password\"\n          id=\"password\"\n          placeholder=\"Password\"\n        />\n      </div>\n      <div class=\"error\"><p>"
+    + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"error") || (depth0 != null ? lookupProperty(depth0,"error") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"error","hash":{},"data":data,"loc":{"start":{"line":68,"column":28},"end":{"line":68,"column":37}}}) : helper)))
+    + "</p></div>\n      <div class=\"field-submit\">\n        <button type=\"submit\" id=\"login-submit\">Login</button>\n      </div>\n    </form>\n";
+},"9":function(container,depth0,helpers,partials,data) {
+    return "    <p class=\"disclaimer\">You are currently using this app as a guest. Your shortcuts are stored locally on your device and will not be synced across other devices. If you want to access your shortcuts from anywhere and keep them safe in the cloud, you can create a free account with us. Creating an account will also allow you to share your shortcuts with others and discover new ones from our community. Are you ready to join us?</p>\n    <button id=\"register-button\" class=\"navigation-button\">Sure, I'll create an account</button>\n    <div class=\"separator\">Or</div>\n    <button id=\"login-button\" class=\"navigation-button\">Already have an account</button>\n    ";
+},"11":function(container,depth0,helpers,partials,data) {
+    return "    <div id=\"loading\"></div>\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div\n  id=\"auth-modal\"\n  class=\"hide\"\n  data-modal=\"\"\n  data-tab-container=\"auth\"\n>\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"createdAccount") : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data,"loc":{"start":{"line":7,"column":4},"end":{"line":78,"column":11}}})) != null ? stack1 : "")
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"loading") : depth0),{"name":"if","hash":{},"fn":container.program(11, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":79,"column":4},"end":{"line":81,"column":11}}})) != null ? stack1 : "")
+    + "</div>\n";
 },"useData":true});
 templates['shortcut'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {

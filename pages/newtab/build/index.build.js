@@ -2324,8 +2324,62 @@
         templates["add-shortcut-modal"] = template({ "compiler": [8, ">= 4.3.0"], "main": function(container, depth0, helpers, partials, data) {
           return '<div\n  id="add-shortcut-modal"\n  class="hide"\n  data-modal=""\n  data-tab-container="add-shortcut"\n>\n  <h3>Add new shortcut</h3>\n  <div class="tabs">\n    <button class="active" data-tab="new">Create new shortcut</button>\n    <button data-tab="link">Link to another shortcut</button>\n  </div>\n  <div class="tab" data-tab="new">\n    <form id="add-shortcut-form" data-form>\n      <div class="field">\n        <label for="shortcut-new-title">Title</label>\n        <input\n          type="text"\n          id="shortcut-new-title"\n          placeholder="Eg. Reddit"\n          name="title"\n        />\n      </div>\n      <div class="field">\n        <label for="shortcut-new-link">Link</label>\n        <input\n          type="text"\n          id="shortcut-new-link"\n          placeholder="Eg. reddit.com"\n          name="link"\n        />\n      </div>\n      <div class="field">\n        <label for="shortcut-new-icon">Icon</label>\n        <input\n          type="text"\n          id="shortcut-new-icon"\n          placeholder="Link to the favicon, I have to optimize this somehow"\n          name="icon"\n        />\n      </div>\n      <div class="field-submit">\n        <button type="submit">Submit</button>\n      </div>\n    </form>\n  </div>\n  <div class="tab hide" data-tab="link">\n    <form id="add-shortcut-form-related" data-form>\n      <div class="field">\n        <label for="shortcut-related">Related shortcut</label>\n        <select id="shortcut-related" name="parent"></select>\n      </div>\n      <div class="field">\n        <label for="shortcut-related-title">Title</label>\n        <input\n          type="text"\n          id="shortcut-related-title"\n          placeholder="Eg. Reddit"\n          name="title"\n        />\n      </div>\n      <div class="field">\n        <label for="shortcut-related-link">Link</label>\n        <input\n          type="text"\n          id="shortcut-related-link"\n          placeholder="Eg. reddit.com"\n          name="link"\n        />\n      </div>\n      <div class="field-submit">\n        <button type="submit">Submit</button>\n      </div>\n    </form>\n  </div>\n</div>\n';
         }, "useData": true });
-        templates["auth-modal"] = template({ "compiler": [8, ">= 4.3.0"], "main": function(container, depth0, helpers, partials, data) {
-          return '<div\n  id="auth-modal"\n  class="hide"\n  data-modal=""\n  data-tab-container="auth"\n>\n  <form id="login-form" data-form>\n    <h3 id="login-uuid-container">Your UUID is <span id="login-uuid"></span></h3>\n    <div class="separator">or Login</div>\n    <div class="field">\n      <label for="login-username">Username or UUID</label>\n      <input type="text" id="login-username" placeholder="Please enter your username or UUID" name="username" />\n    </div>\n    <div class="field">\n      <label for="login-password">Password</label>\n      <input type="password" id="login-password" placeholder="Please enter your password if you have one" name="password" />\n    </div>\n    <div class="error"><p></p></div>\n    <div class="field-submit">\n      <button type="submit">Submit</button>\n    </div>\n  </form>\n</div>\n';
+        templates["auth-modal"] = template({ "1": function(container, depth0, helpers, partials, data) {
+          var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return '    <div class="signup-message">\n      <p>Your account is created. You can access your account using your username</p>\n      <div id="login-uuid-container"><span>Or use this UUID:</span><span id="login-uuid">' + container.escapeExpression((helper = (helper = lookupProperty(helpers, "uuid") || (depth0 != null ? lookupProperty(depth0, "uuid") : depth0)) != null ? helper : container.hooks.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : container.nullContext || {}, { "name": "uuid", "hash": {}, "data": data, "loc": { "start": { "line": 10, "column": 89 }, "end": { "line": 10, "column": 97 } } }) : helper)) + '</span></div>\n      <p>You will need your password to login if you have set it. You can set a password later as well.</p>\n      <div class="field-submit">\n        <button id="proceed">Proceed</button>\n      </div>\n    </div>\n';
+        }, "3": function(container, depth0, helpers, partials, data) {
+          var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return (stack1 = lookupProperty(helpers, "if").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "isCreatingAccount") : depth0, { "name": "if", "hash": {}, "fn": container.program(4, data, 0), "inverse": container.program(6, data, 0), "data": data, "loc": { "start": { "line": 16, "column": 4 }, "end": { "line": 78, "column": 4 } } })) != null ? stack1 : "";
+        }, "4": function(container, depth0, helpers, partials, data) {
+          var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return '    <div class="actions-container">\n      <button id="back">Go Back</button>\n    </div>\n    <form id="register-form" data-form>\n      <div class="field">\n        <label for="username">Username</label>\n        <input\n          type="text"\n          name="username"\n          id="username"\n          placeholder="Username"\n        />\n      </div>\n      <div class="field">\n        <label for="password">Password</label>\n        <input\n          type="password"\n          name="password"\n          id="password"\n          placeholder="Password"\n        />\n      </div>\n      <div class="error"><p>' + container.escapeExpression((helper = (helper = lookupProperty(helpers, "error") || (depth0 != null ? lookupProperty(depth0, "error") : depth0)) != null ? helper : container.hooks.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : container.nullContext || {}, { "name": "error", "hash": {}, "data": data, "loc": { "start": { "line": 39, "column": 28 }, "end": { "line": 39, "column": 37 } } }) : helper)) + '</p></div>\n      <div class="field-submit">\n        <button type="submit" id="login-submit">Register</button>\n      </div>\n    </form>\n';
+        }, "6": function(container, depth0, helpers, partials, data) {
+          var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return (stack1 = lookupProperty(helpers, "if").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "isLoggingIn") : depth0, { "name": "if", "hash": {}, "fn": container.program(7, data, 0), "inverse": container.program(9, data, 0), "data": data, "loc": { "start": { "line": 44, "column": 4 }, "end": { "line": 78, "column": 4 } } })) != null ? stack1 : "";
+        }, "7": function(container, depth0, helpers, partials, data) {
+          var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return '    <div class="actions-container">\n      <button id="back">Go Back</button>\n    </div>\n    <form id="login-form" data-form>\n      <div class="field">\n        <label for="username">Username or UUID</label>\n        <input\n          type="text"\n          name="username"\n          id="username"\n          placeholder="Username or UUID"\n          required\n        />\n      </div>\n      <div class="field">\n        <label for="password">Password</label>\n        <input\n          type="password"\n          name="password"\n          id="password"\n          placeholder="Password"\n        />\n      </div>\n      <div class="error"><p>' + container.escapeExpression((helper = (helper = lookupProperty(helpers, "error") || (depth0 != null ? lookupProperty(depth0, "error") : depth0)) != null ? helper : container.hooks.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : container.nullContext || {}, { "name": "error", "hash": {}, "data": data, "loc": { "start": { "line": 68, "column": 28 }, "end": { "line": 68, "column": 37 } } }) : helper)) + '</p></div>\n      <div class="field-submit">\n        <button type="submit" id="login-submit">Login</button>\n      </div>\n    </form>\n';
+        }, "9": function(container, depth0, helpers, partials, data) {
+          return `    <p class="disclaimer">You are currently using this app as a guest. Your shortcuts are stored locally on your device and will not be synced across other devices. If you want to access your shortcuts from anywhere and keep them safe in the cloud, you can create a free account with us. Creating an account will also allow you to share your shortcuts with others and discover new ones from our community. Are you ready to join us?</p>
+    <button id="register-button" class="navigation-button">Sure, I'll create an account</button>
+    <div class="separator">Or</div>
+    <button id="login-button" class="navigation-button">Already have an account</button>
+    `;
+        }, "11": function(container, depth0, helpers, partials, data) {
+          return '    <div id="loading"></div>\n';
+        }, "compiler": [8, ">= 4.3.0"], "main": function(container, depth0, helpers, partials, data) {
+          var stack1, alias1 = depth0 != null ? depth0 : container.nullContext || {}, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return '<div\n  id="auth-modal"\n  class="hide"\n  data-modal=""\n  data-tab-container="auth"\n>\n' + ((stack1 = lookupProperty(helpers, "if").call(alias1, depth0 != null ? lookupProperty(depth0, "createdAccount") : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data, "loc": { "start": { "line": 7, "column": 4 }, "end": { "line": 78, "column": 11 } } })) != null ? stack1 : "") + ((stack1 = lookupProperty(helpers, "if").call(alias1, depth0 != null ? lookupProperty(depth0, "loading") : depth0, { "name": "if", "hash": {}, "fn": container.program(11, data, 0), "inverse": container.noop, "data": data, "loc": { "start": { "line": 79, "column": 4 }, "end": { "line": 81, "column": 11 } } })) != null ? stack1 : "") + "</div>\n";
         }, "useData": true });
         templates["shortcut"] = template({ "1": function(container, depth0, helpers, partials, data) {
           var stack1, helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
@@ -2378,7 +2432,7 @@
   var require_store = __commonJS({
     "pages/newtab/scripts/store.js"(exports, module) {
       var stores = {};
-      var store = (initial = {}, key) => {
+      var store = (initial = {}, key = "", compute = null) => {
         const subscribers = [];
         let data = initial;
         if (key) {
@@ -2398,10 +2452,16 @@
         };
         const set = (newData) => {
           data = newData;
+          if (compute) {
+            data = compute(data);
+          }
           if (key) {
             localStorage.setItem(key, JSON.stringify(data));
           }
           emit();
+        };
+        const update = (newData) => {
+          set({ ...data, ...newData });
         };
         const get = () => {
           return data;
@@ -2410,7 +2470,7 @@
           subscribers.push(fn);
           fn(data);
         };
-        stores[key] = { set, get, subscribe };
+        stores[key] = { set, get, subscribe, compute, update };
         return stores[key];
       };
       var getStore = (key) => {
@@ -2635,26 +2695,46 @@
     }
   });
 
+  // pages/newtab/scripts/dynamic.js
+  var require_dynamic = __commonJS({
+    "pages/newtab/scripts/dynamic.js"(exports, module) {
+      var querySelector = (selector, scope = document) => (fn) => {
+        const element = scope.querySelector(selector);
+        if (element)
+          return fn(element);
+        return null;
+      };
+      async function observeElementChanges(fn) {
+        const result = fn();
+        if (result)
+          return result;
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        return observeElementChanges(fn);
+      }
+      module.exports = { querySelector, observeElementChanges };
+    }
+  });
+
   // pages/newtab/scripts/forms.js
   var require_forms = __commonJS({
     "pages/newtab/scripts/forms.js"(exports, module) {
-      var formValues2 = {};
+      var formValues = {};
       var setupForms = (scope) => {
         const forms = scope.querySelectorAll("[data-form]");
         Array.from(forms || []).forEach((form) => {
           const formName = form.id;
-          formValues2[formName] = { values: {} };
+          formValues[formName] = { values: {} };
           Array.from(form.querySelectorAll("input, textarea, select")).forEach(
             (input) => {
-              formValues2[formName].values[input.name] = input.value;
+              formValues[formName].values[input.name] = input.value;
               input.addEventListener("change", (e) => {
-                formValues2[formName].values[input.name] = e.target.value;
+                formValues[formName].values[input.name] = e.target.value;
               });
             }
           );
-          const defaultValues = { ...formValues2[formName].values };
-          formValues2[formName].reset = () => {
-            formValues2[formName].values = { ...defaultValues };
+          const defaultValues = { ...formValues[formName].values };
+          formValues[formName].reset = () => {
+            formValues[formName].values = { ...defaultValues };
           };
         });
       };
@@ -2662,7 +2742,7 @@
         const forms = scope.querySelectorAll("[data-form]");
         Array.from(forms || []).forEach((form) => {
           const formName = form.id;
-          delete formValues2[formName];
+          delete formValues[formName];
         });
       };
       var stopPropagation = (fn) => (e) => {
@@ -2679,7 +2759,7 @@
       };
       setupForms(document);
       module.exports = {
-        formValues: formValues2,
+        formValues,
         stopPropagation,
         preventDefault,
         setupForms,
@@ -2691,16 +2771,10 @@
   // pages/newtab/scripts/modal.js
   var require_modal = __commonJS({
     "pages/newtab/scripts/modal.js"(exports, module) {
+      var { observeElementChanges } = require_dynamic();
       var { setupForms, removeForms, stopPropagation } = require_forms();
       var { setupTabs } = require_tabs();
       var modalBackdrop = document.querySelector("#backdrop");
-      async function observeElementChanges(fn) {
-        const result = fn();
-        if (result)
-          return result;
-        await new Promise((resolve) => requestAnimationFrame(resolve));
-        return observeElementChanges(fn);
-      }
       var showModal = async (template) => {
         modalBackdrop.innerHTML = template;
         const modal = await observeElementChanges(
@@ -2728,7 +2802,7 @@
       var { listenToTab } = require_tabs();
       var { showModal, hideModal } = require_modal();
       var { getShortcuts, setShortcuts } = require_shortcuts();
-      var { formValues: formValues2, preventDefault } = require_forms();
+      var { formValues, preventDefault } = require_forms();
       var handlebars = require_handlebars();
       var shortcutAddButton = document.querySelector("#shortcuts-add");
       shortcutAddButton.addEventListener("click", async () => {
@@ -2758,8 +2832,8 @@
       });
       var addShortcut = (mode = "") => () => {
         const formName = mode === "related" ? "add-shortcut-form-related" : "add-shortcut-form";
-        const emptyFields = Object.keys(formValues2[formName].values).filter(
-          (key) => key !== "icon" && formValues2[formName].values[key] === ""
+        const emptyFields = Object.keys(formValues[formName].values).filter(
+          (key) => key !== "icon" && formValues[formName].values[key] === ""
         );
         if (emptyFields.length > 0) {
           emptyFields.forEach((field) => {
@@ -2771,21 +2845,21 @@
         if (mode === "related") {
           const shortcuts = getShortcuts();
           const shortcut = shortcuts.find(
-            (shortcut2) => shortcut2.link === formValues2["add-shortcut-form-related"].values.parent
+            (shortcut2) => shortcut2.link === formValues["add-shortcut-form-related"].values.parent
           );
           if (!shortcut) {
             throw new Error("Shortcut not found");
           }
-          shortcut.children.push(formValues2["add-shortcut-form-related"].values);
+          shortcut.children.push(formValues["add-shortcut-form-related"].values);
           setShortcuts(shortcuts);
         } else {
           setShortcuts([
             ...getShortcuts(),
-            { ...formValues2["add-shortcut-form"].values, children: [] }
+            { ...formValues["add-shortcut-form"].values, children: [] }
           ]);
         }
-        formValues2["add-shortcut-form-related"].reset();
-        formValues2["add-shortcut-form"].reset();
+        formValues["add-shortcut-form-related"].reset();
+        formValues["add-shortcut-form"].reset();
         hideModal();
       };
     }
@@ -4484,7 +4558,7 @@
   var require_search = __commonJS({
     "pages/newtab/scripts/search.js"() {
       var Fuse = require_fuse_common();
-      var { formValues: formValues2, preventDefault } = require_forms();
+      var { formValues, preventDefault } = require_forms();
       var { getBookmarks, subscribeBookmarks } = require_bookmarks();
       var { getShortcuts, subscribeShortcuts } = require_shortcuts();
       var searchEverythingContainer = document.querySelector("#search-everything");
@@ -4657,7 +4731,7 @@
         return uniqueResults.slice(0, 10);
       }
       var search = () => {
-        let query = formValues2["search-form"].values.search;
+        let query = formValues["search-form"].values.search;
         if (!query) {
           return;
         }
@@ -4684,14 +4758,6 @@
     }
   });
 
-  // pages/newtab/scripts/dynamic.js
-  var require_dynamic = __commonJS({
-    "pages/newtab/scripts/dynamic.js"(exports, module) {
-      var querySelector = (selector, scope = document) => () => scope.querySelector(selector);
-      module.exports = { querySelector };
-    }
-  });
-
   // pages/newtab/scripts/auth.js
   var require_auth = __commonJS({
     "pages/newtab/scripts/auth.js"(exports, module) {
@@ -4699,11 +4765,14 @@
       var { store } = require_store();
       var handlebars = require_handlebars();
       var { querySelector } = require_dynamic();
-      var { preventDefault } = require_forms();
+      var { preventDefault, formValues } = require_forms();
       var loginButton = document.querySelector("#menu");
-      var loginUUID = querySelector("#login-uuid", modalBackdrop);
-      var loginError = querySelector("#login-form .error p", modalBackdrop);
       var loginForm = querySelector("#login-form", modalBackdrop);
+      var registerForm = querySelector("#register-form", modalBackdrop);
+      var registerNavigateButton = querySelector("#register-button", modalBackdrop);
+      var loginNavigateButton = querySelector("#login-button", modalBackdrop);
+      var proceedNavigationButton = querySelector("#proceed", modalBackdrop);
+      var backNavigationButton = querySelector("#back", modalBackdrop);
       var {
         get: getUser,
         set: setUser,
@@ -4712,65 +4781,104 @@
       var {
         get: getRequestState,
         set: setRequestState,
+        update: updateRequestState,
         subscribe: subscribeRequestState
-      } = store({ loading: false, error: "" });
-      loginButton.addEventListener("click", async () => {
-        await showModal(handlebars.templates["auth-modal"]());
-        if (getUser().uuid) {
-          loginUUID().innerHTML = getUser().uuid;
-        } else {
-          await registerUser();
-        }
-        loginForm.addEventListener("submit", preventDefault(loginUser));
+      } = store({
+        isShowingModal: false,
+        loading: false,
+        error: "",
+        uuid: "",
+        createdAccount: false,
+        isCreatingAccount: false,
+        isLoggingIn: false
       });
-      var loginUser = async () => {
-        if (!formValues["login-form"].values.username) {
-          setRequestState({ loading: false, error: "Username or UUID is required" });
+      subscribeRequestState(async (state) => {
+        if (!state.isShowingModal) {
+          hideModal();
           return;
         }
-        setRequestState({ loading: true, error: "" });
+        hideModal();
+        await showModal(handlebars.templates["auth-modal"](state));
+        loginNavigateButton(
+          (node) => node.addEventListener(
+            "click",
+            () => setRequestState({ isShowingModal: true, isLoggingIn: true })
+          )
+        );
+        registerNavigateButton(
+          (node) => node.addEventListener(
+            "click",
+            () => setRequestState({ isShowingModal: true, isCreatingAccount: true })
+          )
+        );
+        proceedNavigationButton(
+          (node) => node.addEventListener(
+            "click",
+            () => setRequestState({ isShowingModal: false })
+          )
+        );
+        backNavigationButton(
+          (node) => node.addEventListener(
+            "click",
+            () => setRequestState({
+              isShowingModal: true
+            })
+          )
+        );
+        loginForm(
+          (node) => node.addEventListener("submit", preventDefault(loginUser))
+        );
+        registerForm(
+          (node) => node.addEventListener("submit", preventDefault(registerUser))
+        );
+      });
+      loginButton.addEventListener("click", async () => {
+        setRequestState({ isShowingModal: true });
+      });
+      var loginUser = async () => {
+        updateRequestState({ loading: true, error: "" });
+        const { username, password } = formValues["login-form"].values;
         const response = await fetch(`${"http://localhost:3000/api/v1"}/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(formValues["login-form"].values)
+          body: JSON.stringify({
+            username,
+            password
+          })
         });
-        const result = await response.json();
-        setRequestState({ loading: false, error: "" });
-        setUser(result);
-        loginUUID().innerHTML = result.uuid;
-        hideModal();
+        if (response.ok) {
+          const { uuid, token } = await response.json();
+          setRequestState({ isShowingModal: false });
+          setUser({ uuid, username, token });
+        } else {
+          updateRequestState({ error: (await response.json()).error });
+        }
+        updateRequestState({ loading: false });
       };
       var registerUser = async () => {
+        updateRequestState({ loading: true, error: "" });
+        const { username, password } = formValues["register-form"].values;
         const response = await fetch(`${"http://localhost:3000/api/v1"}/auth/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
-          }
+          },
+          body: JSON.stringify({
+            username,
+            password
+          })
         });
-        setRequestState({ loading: true, error: "" });
-        const result = await response.json();
-        setRequestState({ loading: false, error: "" });
-        loginUUID().innerHTML = result.uuid;
-        setUser(result);
-      };
-      subscribeRequestState(({ loading, error }) => {
-        if (!loginUUID()) {
-          return;
-        }
-        loginError().innerHTML = "";
-        if (loading) {
-          loginUUID().innerHTML = "Loading...";
-          loginUUID().classList.add("loading");
+        if (response.ok) {
+          const { uuid, token } = await response.json();
+          setUser({ uuid, username, token });
+          updateRequestState({ createdAccount: true, uuid });
         } else {
-          loginUUID().innerHTML = "";
-          loginUUID().classList.remove("loading");
+          updateRequestState({ error: (await response.json()).error });
         }
-        if (error) {
-          loginError().innerHTML = error;
-        }
-      });
+        updateRequestState({ loading: false });
+      };
       module.exports = { subscribeUser };
     }
   });

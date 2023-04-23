@@ -1,16 +1,8 @@
+const { observeElementChanges } = require("./dynamic");
 const { setupForms, removeForms, stopPropagation } = require("./forms");
 const { setupTabs } = require("./tabs");
 
 const modalBackdrop = document.querySelector("#backdrop");
-
-async function observeElementChanges(fn) {
-  const result = fn();
-  if (result) return result;
-
-  await new Promise((resolve) => requestAnimationFrame(resolve));
-
-  return observeElementChanges(fn);
-}
 
 const showModal = async (template) => {
   modalBackdrop.innerHTML = template;

@@ -4,20 +4,79 @@
   data-modal=""
   data-tab-container="auth"
 >
-  <form id="login-form" data-form>
-    <h3 id="login-uuid-container"><span>Your UUID is:</span><span id="login-uuid"></span></h3>
-    <div class="separator">or Login</div>
-    <div class="field">
-      <label for="login-username">Username or UUID</label>
-      <input type="text" id="login-username" placeholder="Please enter your username or UUID" name="username" />
+    {{#if createdAccount}}
+    <div class="signup-message">
+      <p>Your account is created. You can access your account using your username</p>
+      <div id="login-uuid-container"><span>Or use this UUID:</span><span id="login-uuid">{{uuid}}</span></div>
+      <p>You will need your password to login if you have set it. You can set a password later as well.</p>
+      <div class="field-submit">
+        <button id="proceed">Proceed</button>
+      </div>
     </div>
-    <div class="field">
-      <label for="login-password">Password</label>
-      <input type="password" id="login-password" placeholder="Please enter your password if you have one" name="password" />
+    {{else if isCreatingAccount}}
+    <div class="actions-container">
+      <button id="back">Go Back</button>
     </div>
-    <div class="error"><p></p></div>
-    <div class="field-submit">
-      <button type="submit">Submit</button>
+    <form id="register-form" data-form>
+      <div class="field">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+        />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+        />
+      </div>
+      <div class="error"><p>{{error}}</p></div>
+      <div class="field-submit">
+        <button type="submit" id="login-submit">Register</button>
+      </div>
+    </form>
+    {{else if isLoggingIn}}
+    <div class="actions-container">
+      <button id="back">Go Back</button>
     </div>
-  </form>
+    <form id="login-form" data-form>
+      <div class="field">
+        <label for="username">Username or UUID</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username or UUID"
+          required
+        />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+        />
+      </div>
+      <div class="error"><p>{{error}}</p></div>
+      <div class="field-submit">
+        <button type="submit" id="login-submit">Login</button>
+      </div>
+    </form>
+    {{else}}
+    <p class="disclaimer">You are currently using this app as a guest. Your shortcuts are stored locally on your device and will not be synced across other devices. If you want to access your shortcuts from anywhere and keep them safe in the cloud, you can create a free account with us. Creating an account will also allow you to share your shortcuts with others and discover new ones from our community. Are you ready to join us?</p>
+    <button id="register-button" class="navigation-button">Sure, I'll create an account</button>
+    <div class="separator">Or</div>
+    <button id="login-button" class="navigation-button">Already have an account</button>
+    {{/if}}
+    {{#if loading}}
+    <div id="loading"></div>
+    {{/if}}
 </div>
