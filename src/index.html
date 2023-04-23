@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Awesome New Tab</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div id="greeting">
+      <div class="container col">
+        <h3 id="hey"><span id="time-state"></span></h3>
+        <h2 id="greeting-info">
+          It's <span id="date">January 1st</span>, <span id="time">02:45</span>,
+          and apparently it's <span id="weather">sunny</span> outside.
+        </h2>
+      </div>
+    </div>
+    <div class="container col" data-tab-container="add-shortcut">
+      <div class="tabs">
+        <button class="active" data-tab="shortcuts">Shortcuts</button>
+        <button data-tab="bookmarks">Bookmarks</button>
+        <form id="search-form" data-form>
+          <input
+            placeholder="Search for a shortcut, search Google or visit a wesbite"
+            name="search"
+            id="search-input"
+            tabindex="1"
+          />
+          <div id="search-everything"></div>
+        </form>
+      </div>
+      <div class="tab no-padding" data-tab="shortcuts">
+        <div id="lists"></div>
+      </div>
+      <div class="tab no-padding" data-tab="bookmarks">
+        <div class="col">
+          <div id="bookmarks"></div>
+        </div>
+      </div>
+    </div>
+    <div id="menu">
+      <button id="menu">
+        <img src="./icons/menu.svg" alt="Menubar" />
+      </button>
+    </div>
+    <div id="backdrop" class="hide"></div>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>

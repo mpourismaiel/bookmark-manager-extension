@@ -2,34 +2,27 @@
   "name": "chrome-extension",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
   "scripts": {
-    "css:build:index": "tailwindcss -i ./pages/newtab/index.css -o ./pages/newtab/build/index.build.css",
-    "css:watch:index": "npm run css:build:index -- --watch",
-    "css:build:popup": "tailwindcss -i ./pages/popup/popup.css -o ./pages/popup/build/popup.build.css",
-    "css:watch:popup": "npm run css:build:popup -- --watch",
-    "js:build:index": "NODE_ENV=production node ./pages/newtab/esbuild.js",
-    "js:watch:index": "node ./pages/newtab/esbuild.js",
-    "js:build:popup": "esbuild pages/popup/popup.js --bundle --minify --sourcemap --outfile=pages/popup/build/popup.build.js",
-    "js:watch:popup": "npm run js:build:popup -- --watch",
-    "dev:index": "concurrently --names \"css,js\" --prefix \"{name}\" --prefix-colors \"blue,green\" \"npm run css:watch:index\" \"npm run js:watch:index\"",
-    "hbs:build:index": "handlebars pages/newtab/templates -f pages/newtab/build/templates.js"
+    "dev": "parcel watch src/manifest.json --config @parcel/config-webextension --host localhost --port 4000",
+    "build": "parcel build src/manifest.json",
+    "handlebars": "handlebars src/templates -f src/templates/index.js -e hbs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
+    "@parcel/config-webextension": "^2.8.3",
     "concurrently": "^8.0.1",
-    "esbuild": "^0.17.16",
-    "handlebars": "^4.7.7",
+    "parcel": "^2.8.3",
     "postcss": "^8.4.21",
+    "postcss-import": "^15.1.0",
     "tailwindcss": "^3.3.1"
   },
   "dependencies": {
     "browserslist": "^4.21.5",
     "dotenv": "^16.0.3",
     "fuse.js": "^6.6.2",
+    "handlebars": "^4.7.7",
     "sortablejs": "^1.15.0"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "Awesome New Tab",
+  "description": "Shortcuts and awesomeness",
+  "icons": {
+    "48": "./icons/icon-64.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "./index.html"
+  },
+  "permissions": ["tabs", "bookmarks"]
+}

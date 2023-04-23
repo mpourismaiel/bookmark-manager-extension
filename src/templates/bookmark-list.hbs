@@ -1,0 +1,12 @@
+<div class="bookmark-folder">
+  <h1{{title}}</h1>
+  <div class="bookmark-children">
+    {{#if children.length}}
+      {{#each children}}
+        {{> bookmark}}
+      {{/each}}
+    {{else}}
+      <p class="no-bookmark">No bookmarks found!</p>
+    {{/if}}
+  </div>
+</div>
