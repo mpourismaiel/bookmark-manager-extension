@@ -2523,7 +2523,22 @@ body {
   color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
-#shortcuts {
+#lists {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.shortcuts-list-title {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.shortcuts-list {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(4, minmax(0, 1fr));

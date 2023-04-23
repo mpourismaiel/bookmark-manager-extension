@@ -1,0 +1,18 @@
+<div class="shortcuts-list-container">
+  {{#if title}}
+  <div class="shortcuts-list-title">
+    <h2>{{title}}</h2>
+  </div>
+  {{/if}}
+
+  <div class="shortcuts-list">
+  {{#each shortcuts}}
+    {{> shortcut}}
+  {{/each}}
+  </div>
+
+  <div id="shortcuts-actions">
+    <button id="shortcuts-add">+ Add new shortcut</button>
+    <button id="shortcuts-edit">Edit shortcuts</button>
+  </div>
+</div>

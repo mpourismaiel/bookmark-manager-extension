@@ -119,7 +119,15 @@ body {
   @apply text-yellow-500;
 }
 
-#shortcuts {
+#lists {
+  @apply flex flex-col gap-8;
+}
+
+.shortcuts-list-title {
+  @apply text-white text-xl font-bold mb-4;
+}
+
+.shortcuts-list {
   @apply grid grid-cols-4 w-full gap-4;
 }
 

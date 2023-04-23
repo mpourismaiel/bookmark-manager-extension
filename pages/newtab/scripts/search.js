@@ -1,7 +1,7 @@
 const Fuse = require("fuse.js");
 const { formValues, preventDefault } = require("./forms");
 const { getBookmarks, subscribeBookmarks } = require("./bookmarks");
-const { getShortcuts, subscribeShortcuts } = require("./shortcuts");
+const { getLists, subscribeLists } = require("./shortcuts");
 
 const searchEverythingContainer = document.querySelector("#search-everything");
 
@@ -13,9 +13,12 @@ const getSearchOptions = () =>
 
 const updateSearchData = () => {
   const bookmarks = flattenData(getBookmarks());
-  const shortcuts = flattenData(getShortcuts());
+  const lists = flattenData(getLists());
 
-  searchEverythingContainer.innerHTML = [...bookmarks, ...shortcuts]
+  searchEverythingContainer.innerHTML = [
+    ...bookmarks,
+    ...lists.map((list) => list.shortcuts).flat(1),
+  ]
     .map(
       (data) =>
         `<div class="search-option" data-value="${data.link}" data-title="${data.title}"><h3>${data.title}</h3><h4>${data.link}</h4></div>`
@@ -262,4 +265,4 @@ searchForm.addEventListener("submit", preventDefault(search));
 searchInput.focus();
 
 subscribeBookmarks(updateSearchData);
-subscribeShortcuts(updateSearchData);
+subscribeLists(updateSearchData);

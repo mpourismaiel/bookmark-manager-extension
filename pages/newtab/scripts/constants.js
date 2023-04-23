@@ -1,30 +1,35 @@
-const shortcutsDefault = [
+const listsDefault = [
   {
-    title: "Reddit",
-    link: "reddit.com",
-    icon: "./icons/reddit.png",
-    children: [],
-  },
-  {
-    title: "Github",
-    link: "github.com",
-    icon: "./icons/github.svg",
-    children: [],
-  },
-  {
-    title: "30nama",
-    link: "30nama.com",
-    icon: "./icons/30nama.ico",
-    children: [],
-  },
-  {
-    title: "Youtube",
-    link: "youtube.com",
-    icon: "./icons/youtube.png",
-    children: [],
+    title: "",
+    shortcuts: [
+      {
+        title: "Reddit",
+        url: "reddit.com",
+        icon: "./icons/reddit.png",
+        children: [],
+      },
+      {
+        title: "Github",
+        url: "github.com",
+        icon: "./icons/github.svg",
+        children: [],
+      },
+      {
+        title: "30nama",
+        url: "30nama.com",
+        icon: "./icons/30nama.ico",
+        children: [],
+      },
+      {
+        title: "Youtube",
+        url: "youtube.com",
+        icon: "./icons/youtube.png",
+        children: [],
+      },
+    ],
   },
 ];
 
 module.exports = {
-  shortcutsDefault,
+  listsDefault,
 };

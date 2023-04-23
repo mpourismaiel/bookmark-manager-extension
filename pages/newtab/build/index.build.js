@@ -2381,6 +2381,48 @@
           };
           return '<div\n  id="auth-modal"\n  class="hide"\n  data-modal=""\n  data-tab-container="auth"\n>\n' + ((stack1 = lookupProperty(helpers, "if").call(alias1, depth0 != null ? lookupProperty(depth0, "createdAccount") : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.program(3, data, 0), "data": data, "loc": { "start": { "line": 7, "column": 4 }, "end": { "line": 78, "column": 11 } } })) != null ? stack1 : "") + ((stack1 = lookupProperty(helpers, "if").call(alias1, depth0 != null ? lookupProperty(depth0, "loading") : depth0, { "name": "if", "hash": {}, "fn": container.program(11, data, 0), "inverse": container.noop, "data": data, "loc": { "start": { "line": 79, "column": 4 }, "end": { "line": 81, "column": 11 } } })) != null ? stack1 : "") + "</div>\n";
         }, "useData": true });
+        templates["shortcut-list-container"] = template({ "1": function(container, depth0, helpers, partials, data) {
+          var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return (stack1 = container.invokePartial(lookupProperty(partials, "shortcut-list"), depth0, { "name": "shortcut-list", "data": data, "indent": "  ", "helpers": helpers, "partials": partials, "decorators": container.decorators })) != null ? stack1 : "";
+        }, "compiler": [8, ">= 4.3.0"], "main": function(container, depth0, helpers, partials, data) {
+          var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return (stack1 = lookupProperty(helpers, "each").call(depth0 != null ? depth0 : container.nullContext || {}, depth0 != null ? lookupProperty(depth0, "lists") : depth0, { "name": "each", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data, "loc": { "start": { "line": 1, "column": 0 }, "end": { "line": 3, "column": 9 } } })) != null ? stack1 : "";
+        }, "usePartial": true, "useData": true });
+        templates["shortcut-list"] = template({ "1": function(container, depth0, helpers, partials, data) {
+          var helper, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return '  <div class="shortcuts-list-title">\n    <h2>' + container.escapeExpression((helper = (helper = lookupProperty(helpers, "title") || (depth0 != null ? lookupProperty(depth0, "title") : depth0)) != null ? helper : container.hooks.helperMissing, typeof helper === "function" ? helper.call(depth0 != null ? depth0 : container.nullContext || {}, { "name": "title", "hash": {}, "data": data, "loc": { "start": { "line": 4, "column": 8 }, "end": { "line": 4, "column": 17 } } }) : helper)) + "</h2>\n  </div>\n";
+        }, "3": function(container, depth0, helpers, partials, data) {
+          var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return (stack1 = container.invokePartial(lookupProperty(partials, "shortcut"), depth0, { "name": "shortcut", "data": data, "indent": "    ", "helpers": helpers, "partials": partials, "decorators": container.decorators })) != null ? stack1 : "";
+        }, "compiler": [8, ">= 4.3.0"], "main": function(container, depth0, helpers, partials, data) {
+          var stack1, alias1 = depth0 != null ? depth0 : container.nullContext || {}, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+            if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+              return parent[propertyName];
+            }
+            return void 0;
+          };
+          return '<div class="shortcuts-list-container">\n' + ((stack1 = lookupProperty(helpers, "if").call(alias1, depth0 != null ? lookupProperty(depth0, "title") : depth0, { "name": "if", "hash": {}, "fn": container.program(1, data, 0), "inverse": container.noop, "data": data, "loc": { "start": { "line": 2, "column": 2 }, "end": { "line": 6, "column": 9 } } })) != null ? stack1 : "") + '\n  <div class="shortcuts-list">\n' + ((stack1 = lookupProperty(helpers, "each").call(alias1, depth0 != null ? lookupProperty(depth0, "shortcuts") : depth0, { "name": "each", "hash": {}, "fn": container.program(3, data, 0), "inverse": container.noop, "data": data, "loc": { "start": { "line": 9, "column": 2 }, "end": { "line": 11, "column": 11 } } })) != null ? stack1 : "") + '  </div>\n\n  <div id="shortcuts-actions">\n    <button id="shortcuts-add">+ Add new shortcut</button>\n    <button id="shortcuts-edit">Edit shortcuts</button>\n  </div>\n</div>\n';
+        }, "usePartial": true, "useData": true });
         templates["shortcut"] = template({ "1": function(container, depth0, helpers, partials, data) {
           var stack1, helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, alias2 = container.hooks.helperMissing, alias3 = "function", alias4 = container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
             if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -2388,7 +2430,7 @@
             }
             return void 0;
           };
-          return '  <a href="https://' + alias4((helper = (helper = lookupProperty(helpers, "link") || (depth0 != null ? lookupProperty(depth0, "link") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "link", "hash": {}, "data": data, "loc": { "start": { "line": 3, "column": 19 }, "end": { "line": 3, "column": 27 } } }) : helper)) + '">\n    <div class="header">\n      <img src="' + alias4((helper = (helper = lookupProperty(helpers, "icon") || (depth0 != null ? lookupProperty(depth0, "icon") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "icon", "hash": {}, "data": data, "loc": { "start": { "line": 5, "column": 16 }, "end": { "line": 5, "column": 24 } } }) : helper)) + '" />\n      <div class="title">\n        <h1>' + alias4((helper = (helper = lookupProperty(helpers, "title") || (depth0 != null ? lookupProperty(depth0, "title") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "title", "hash": {}, "data": data, "loc": { "start": { "line": 7, "column": 12 }, "end": { "line": 7, "column": 21 } } }) : helper)) + "</h1>\n        <h3>https://" + alias4((helper = (helper = lookupProperty(helpers, "link") || (depth0 != null ? lookupProperty(depth0, "link") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "link", "hash": {}, "data": data, "loc": { "start": { "line": 8, "column": 20 }, "end": { "line": 8, "column": 28 } } }) : helper)) + '</h3>\n      </div>\n    </div>\n  </a>\n  <div class="children">\n' + ((stack1 = lookupProperty(helpers, "each").call(alias1, depth0 != null ? lookupProperty(depth0, "children") : depth0, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data, "loc": { "start": { "line": 13, "column": 4 }, "end": { "line": 18, "column": 13 } } })) != null ? stack1 : "") + "  </div>\n";
+          return '  <a href="' + alias4((helper = (helper = lookupProperty(helpers, "url") || (depth0 != null ? lookupProperty(depth0, "url") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "url", "hash": {}, "data": data, "loc": { "start": { "line": 3, "column": 11 }, "end": { "line": 3, "column": 18 } } }) : helper)) + '">\n    <div class="header">\n      <img src="' + alias4((helper = (helper = lookupProperty(helpers, "icon") || (depth0 != null ? lookupProperty(depth0, "icon") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "icon", "hash": {}, "data": data, "loc": { "start": { "line": 5, "column": 16 }, "end": { "line": 5, "column": 24 } } }) : helper)) + '" />\n      <div class="title">\n        <h1>' + alias4((helper = (helper = lookupProperty(helpers, "title") || (depth0 != null ? lookupProperty(depth0, "title") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "title", "hash": {}, "data": data, "loc": { "start": { "line": 7, "column": 12 }, "end": { "line": 7, "column": 21 } } }) : helper)) + "</h1>\n        <h3>" + alias4((helper = (helper = lookupProperty(helpers, "url") || (depth0 != null ? lookupProperty(depth0, "url") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "url", "hash": {}, "data": data, "loc": { "start": { "line": 8, "column": 12 }, "end": { "line": 8, "column": 19 } } }) : helper)) + '</h3>\n      </div>\n    </div>\n  </a>\n  <div class="children">\n' + ((stack1 = lookupProperty(helpers, "each").call(alias1, depth0 != null ? lookupProperty(depth0, "children") : depth0, { "name": "each", "hash": {}, "fn": container.program(2, data, 0), "inverse": container.noop, "data": data, "loc": { "start": { "line": 13, "column": 4 }, "end": { "line": 18, "column": 13 } } })) != null ? stack1 : "") + "  </div>\n";
         }, "2": function(container, depth0, helpers, partials, data) {
           var helper, alias1 = container.lambda, alias2 = container.escapeExpression, alias3 = depth0 != null ? depth0 : container.nullContext || {}, alias4 = container.hooks.helperMissing, alias5 = "function", lookupProperty = container.lookupProperty || function(parent, propertyName) {
             if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -2404,7 +2446,7 @@
             }
             return void 0;
           };
-          return '  <a href="https://' + alias4((helper = (helper = lookupProperty(helpers, "link") || (depth0 != null ? lookupProperty(depth0, "link") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "link", "hash": {}, "data": data, "loc": { "start": { "line": 21, "column": 19 }, "end": { "line": 21, "column": 27 } } }) : helper)) + '">\n    <div>\n      <h1>' + alias4((helper = (helper = lookupProperty(helpers, "title") || (depth0 != null ? lookupProperty(depth0, "title") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "title", "hash": {}, "data": data, "loc": { "start": { "line": 23, "column": 10 }, "end": { "line": 23, "column": 19 } } }) : helper)) + "</h1>\n      <h3>https://" + alias4((helper = (helper = lookupProperty(helpers, "link") || (depth0 != null ? lookupProperty(depth0, "link") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "link", "hash": {}, "data": data, "loc": { "start": { "line": 24, "column": 18 }, "end": { "line": 24, "column": 26 } } }) : helper)) + '</h3>\n    </div>\n  </a>\n  <div class="img">\n    <img src="' + alias4((helper = (helper = lookupProperty(helpers, "icon") || (depth0 != null ? lookupProperty(depth0, "icon") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "icon", "hash": {}, "data": data, "loc": { "start": { "line": 28, "column": 14 }, "end": { "line": 28, "column": 22 } } }) : helper)) + '" />\n  </div>\n';
+          return '  <a href="' + alias4((helper = (helper = lookupProperty(helpers, "url") || (depth0 != null ? lookupProperty(depth0, "url") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "url", "hash": {}, "data": data, "loc": { "start": { "line": 21, "column": 11 }, "end": { "line": 21, "column": 18 } } }) : helper)) + '">\n    <div>\n      <h1>' + alias4((helper = (helper = lookupProperty(helpers, "title") || (depth0 != null ? lookupProperty(depth0, "title") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "title", "hash": {}, "data": data, "loc": { "start": { "line": 23, "column": 10 }, "end": { "line": 23, "column": 19 } } }) : helper)) + "</h1>\n      <h3>" + alias4((helper = (helper = lookupProperty(helpers, "url") || (depth0 != null ? lookupProperty(depth0, "url") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "url", "hash": {}, "data": data, "loc": { "start": { "line": 24, "column": 10 }, "end": { "line": 24, "column": 17 } } }) : helper)) + '</h3>\n    </div>\n  </a>\n  <div class="img">\n    <img src="' + alias4((helper = (helper = lookupProperty(helpers, "icon") || (depth0 != null ? lookupProperty(depth0, "icon") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, { "name": "icon", "hash": {}, "data": data, "loc": { "start": { "line": 28, "column": 14 }, "end": { "line": 28, "column": 22 } } }) : helper)) + '" />\n  </div>\n';
         }, "compiler": [8, ">= 4.3.0"], "main": function(container, depth0, helpers, partials, data) {
           var stack1, helper, alias1 = depth0 != null ? depth0 : container.nullContext || {}, lookupProperty = container.lookupProperty || function(parent, propertyName) {
             if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -2424,6 +2466,11 @@
       var handlebars = require_handlebars_runtime();
       globalThis.Handlebars = handlebars;
       require_templates();
+      handlebars.registerPartial(
+        "shortcut-list",
+        handlebars.templates["shortcut-list"]
+      );
+      handlebars.registerPartial("shortcut", handlebars.templates["shortcut"]);
       module.exports = handlebars;
     }
   });
@@ -2483,35 +2530,314 @@
   // pages/newtab/scripts/constants.js
   var require_constants = __commonJS({
     "pages/newtab/scripts/constants.js"(exports, module) {
-      var shortcutsDefault = [
+      var listsDefault = [
         {
-          title: "Reddit",
-          link: "reddit.com",
-          icon: "./icons/reddit.png",
-          children: []
-        },
-        {
-          title: "Github",
-          link: "github.com",
-          icon: "./icons/github.svg",
-          children: []
-        },
-        {
-          title: "30nama",
-          link: "30nama.com",
-          icon: "./icons/30nama.ico",
-          children: []
-        },
-        {
-          title: "Youtube",
-          link: "youtube.com",
-          icon: "./icons/youtube.png",
-          children: []
+          title: "",
+          shortcuts: [
+            {
+              title: "Reddit",
+              url: "reddit.com",
+              icon: "./icons/reddit.png",
+              children: []
+            },
+            {
+              title: "Github",
+              url: "github.com",
+              icon: "./icons/github.svg",
+              children: []
+            },
+            {
+              title: "30nama",
+              url: "30nama.com",
+              icon: "./icons/30nama.ico",
+              children: []
+            },
+            {
+              title: "Youtube",
+              url: "youtube.com",
+              icon: "./icons/youtube.png",
+              children: []
+            }
+          ]
         }
       ];
       module.exports = {
-        shortcutsDefault
+        listsDefault
       };
+    }
+  });
+
+  // pages/newtab/scripts/dynamic.js
+  var require_dynamic = __commonJS({
+    "pages/newtab/scripts/dynamic.js"(exports, module) {
+      var querySelector = (selector, scope = document) => (fn) => {
+        const element = scope.querySelector(selector);
+        if (element)
+          return fn(element);
+        return null;
+      };
+      async function observeElementChanges(fn) {
+        const result = fn();
+        if (result)
+          return result;
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        return observeElementChanges(fn);
+      }
+      module.exports = { querySelector, observeElementChanges };
+    }
+  });
+
+  // pages/newtab/scripts/forms.js
+  var require_forms = __commonJS({
+    "pages/newtab/scripts/forms.js"(exports, module) {
+      var formValues = {};
+      var setupForms = (scope) => {
+        const forms = scope.querySelectorAll("[data-form]");
+        Array.from(forms || []).forEach((form) => {
+          const formName = form.id;
+          formValues[formName] = { values: {} };
+          Array.from(form.querySelectorAll("input, textarea, select")).forEach(
+            (input) => {
+              formValues[formName].values[input.name] = input.value;
+              input.addEventListener("change", (e) => {
+                formValues[formName].values[input.name] = e.target.value;
+              });
+            }
+          );
+          const defaultValues = { ...formValues[formName].values };
+          formValues[formName].reset = () => {
+            formValues[formName].values = { ...defaultValues };
+          };
+        });
+      };
+      var removeForms = (scope) => {
+        const forms = scope.querySelectorAll("[data-form]");
+        Array.from(forms || []).forEach((form) => {
+          const formName = form.id;
+          delete formValues[formName];
+        });
+      };
+      var stopPropagation = (fn) => (e) => {
+        e.stopPropagation();
+        if (fn) {
+          fn(e);
+        }
+      };
+      var preventDefault2 = (fn) => (e) => {
+        e.preventDefault();
+        if (fn) {
+          fn(e);
+        }
+      };
+      setupForms(document);
+      module.exports = {
+        formValues,
+        stopPropagation,
+        preventDefault: preventDefault2,
+        setupForms,
+        removeForms
+      };
+    }
+  });
+
+  // pages/newtab/scripts/tabs.js
+  var require_tabs = __commonJS({
+    "pages/newtab/scripts/tabs.js"(exports, module) {
+      var tabListeners = {};
+      var setupTabs = (scope) => {
+        const tabs = scope.querySelectorAll("[data-tab-container]");
+        Array.from(tabs || []).forEach((tabContainer) => {
+          const tabButtons = Array.from(
+            tabContainer.querySelectorAll(".tabs button") || []
+          );
+          const tabs2 = Array.from(tabContainer.querySelectorAll(".tab") || []);
+          tabs2.forEach((tab) => tab.classList.add("hide"));
+          tabButtons.forEach((button) => {
+            const tab = tabs2.find((tab2) => tab2.dataset.tab === button.dataset.tab);
+            if (button.classList.contains("active")) {
+              tab.classList.remove("hide");
+            }
+            if (!tab) {
+              console.error("no related tab found", button.dataset.tab, tabContainer);
+              return;
+            }
+            button.addEventListener("click", () => {
+              tabButtons.forEach((button2) => button2.classList.remove("active"));
+              button.classList.add("active");
+              tabs2.forEach((tab2) => tab2.classList.add("hide"));
+              tab.classList.remove("hide");
+              tabListeners[tabContainer.dataset.tabContainer]?.[button.dataset.tab]?.();
+            });
+          });
+        });
+      };
+      var removeTabs = (scope) => {
+        const tabs = scope.querySelectorAll("[data-tab-container]");
+        Array.from(tabs || []).forEach((tabContainer) => {
+          delete tabListeners[tabContainer.dataset.tabContainer];
+        });
+      };
+      var listenToTab = (id, tab, fn) => {
+        if (!tabListeners[id]) {
+          tabListeners[id] = {};
+        }
+        tabListeners[id][tab] = fn;
+      };
+      setupTabs(document);
+      module.exports = { listenToTab, setupTabs, removeTabs };
+    }
+  });
+
+  // pages/newtab/scripts/modal.js
+  var require_modal = __commonJS({
+    "pages/newtab/scripts/modal.js"(exports, module) {
+      var { observeElementChanges } = require_dynamic();
+      var { setupForms, removeForms, stopPropagation } = require_forms();
+      var { setupTabs } = require_tabs();
+      var modalBackdrop = document.querySelector("#backdrop");
+      var showModal2 = async (template) => {
+        modalBackdrop.innerHTML = template;
+        const modal = await observeElementChanges(
+          () => modalBackdrop.querySelector("[data-modal]")
+        );
+        setupTabs(modalBackdrop);
+        setupForms(modalBackdrop);
+        modal.addEventListener("click", stopPropagation());
+        modalBackdrop.classList.remove("hide");
+        modal.classList.remove("hide");
+        modalBackdrop.addEventListener("click", hideModal, { once: true });
+      };
+      var hideModal = async () => {
+        modalBackdrop.innerHTML = "";
+        modalBackdrop.classList.add("hide");
+        removeForms(modalBackdrop);
+      };
+      module.exports = { showModal: showModal2, hideModal, modalBackdrop };
+    }
+  });
+
+  // pages/newtab/scripts/auth.js
+  var require_auth = __commonJS({
+    "pages/newtab/scripts/auth.js"(exports, module) {
+      var { showModal: showModal2, modalBackdrop, hideModal } = require_modal();
+      var { store } = require_store();
+      var handlebars = require_handlebars();
+      var { querySelector } = require_dynamic();
+      var { preventDefault: preventDefault2, formValues } = require_forms();
+      var loginButton = document.querySelector("#menu");
+      var loginForm = querySelector("#login-form", modalBackdrop);
+      var registerForm = querySelector("#register-form", modalBackdrop);
+      var registerNavigateButton = querySelector("#register-button", modalBackdrop);
+      var loginNavigateButton = querySelector("#login-button", modalBackdrop);
+      var proceedNavigationButton = querySelector("#proceed", modalBackdrop);
+      var backNavigationButton = querySelector("#back", modalBackdrop);
+      var {
+        get: getUser,
+        set: setUser,
+        subscribe: subscribeUser
+      } = store({ uuid: "", username: "", token: "" }, "user");
+      var {
+        get: getRequestState,
+        set: setRequestState,
+        update: updateRequestState,
+        subscribe: subscribeRequestState
+      } = store({
+        isShowingModal: false,
+        loading: false,
+        error: "",
+        uuid: "",
+        createdAccount: false,
+        isCreatingAccount: false,
+        isLoggingIn: false
+      });
+      subscribeRequestState(async (state) => {
+        if (!state.isShowingModal) {
+          hideModal();
+          return;
+        }
+        hideModal();
+        await showModal2(handlebars.templates["auth-modal"](state));
+        loginNavigateButton(
+          (node) => node.addEventListener(
+            "click",
+            () => setRequestState({ isShowingModal: true, isLoggingIn: true })
+          )
+        );
+        registerNavigateButton(
+          (node) => node.addEventListener(
+            "click",
+            () => setRequestState({ isShowingModal: true, isCreatingAccount: true })
+          )
+        );
+        proceedNavigationButton(
+          (node) => node.addEventListener(
+            "click",
+            () => setRequestState({ isShowingModal: false })
+          )
+        );
+        backNavigationButton(
+          (node) => node.addEventListener(
+            "click",
+            () => setRequestState({
+              isShowingModal: true
+            })
+          )
+        );
+        loginForm(
+          (node) => node.addEventListener("submit", preventDefault2(loginUser))
+        );
+        registerForm(
+          (node) => node.addEventListener("submit", preventDefault2(registerUser))
+        );
+      });
+      loginButton.addEventListener("click", async () => {
+        setRequestState({ isShowingModal: true });
+      });
+      var loginUser = async () => {
+        updateRequestState({ loading: true, error: "" });
+        const { username, password } = formValues["login-form"].values;
+        const response = await fetch(`${"http://localhost:3000/api/v1"}/auth/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            username,
+            password
+          })
+        });
+        if (response.ok) {
+          const { uuid, token } = await response.json();
+          setRequestState({ isShowingModal: false });
+          setUser({ uuid, username, token });
+        } else {
+          updateRequestState({ error: (await response.json()).error });
+        }
+        updateRequestState({ loading: false });
+      };
+      var registerUser = async () => {
+        updateRequestState({ loading: true, error: "" });
+        const { username, password } = formValues["register-form"].values;
+        const response = await fetch(`${"http://localhost:3000/api/v1"}/auth/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            username,
+            password
+          })
+        });
+        if (response.ok) {
+          const { uuid, token } = await response.json();
+          setUser({ uuid, username, token });
+          updateRequestState({ createdAccount: true, uuid });
+        } else {
+          updateRequestState({ error: (await response.json()).error });
+        }
+        updateRequestState({ loading: false });
+      };
+      module.exports = { subscribeUser };
     }
   });
 
@@ -2521,29 +2847,54 @@
       var sortable = require_Sortable_min();
       var handlebars = require_handlebars();
       var { store } = require_store();
-      var { shortcutsDefault } = require_constants();
-      var shortcutsContainer = document.querySelector("#shortcuts");
+      var { listsDefault } = require_constants();
+      var { subscribeUser } = require_auth();
+      var listsContainer = document.querySelector("#lists");
       var shortcutsEdit = document.querySelector("#shortcuts-edit");
       var {
-        get: getShortcuts,
-        set: setShortcuts,
-        subscribe: subscribeShortcuts
-      } = store(shortcutsDefault, "shortcuts");
-      var isEditing = false;
-      subscribeShortcuts((shortcuts) => {
-        shortcutsContainer.innerHTML = "";
-        isEditing = false;
-        shortcuts.forEach(({ title, link, icon, children }, i) => {
-          shortcutsContainer.innerHTML += handlebars.templates.shortcut({
-            id: i,
-            title,
-            icon: icon || "https://s2.googleusercontent.com/s2/favicons?domain=" + link,
-            children,
-            hasChildren: children && children.length > 0,
-            link: link.replace(/^https?:\/\//, "")
+        get: getLists,
+        set: setLists,
+        subscribe: subscribeLists
+      } = store(listsDefault, "lists");
+      var {
+        get: getState,
+        set: setState,
+        update: updateState,
+        subscribe: subscribeState
+      } = store({ isEditing: false, loading: false, error: "" });
+      subscribeUser(async (user) => {
+        if (user.uuid) {
+          setState({ loading: true });
+          const response = await fetch(`${"http://localhost:3000/api/v1"}/users`, {
+            headers: {
+              Authorization: `Bearer ${user.token}`,
+              "Content-Type": "application/json"
+            }
           });
+          if (response.ok) {
+            const { lists } = await response.json();
+            setLists(lists);
+          } else {
+            updateState({ error: (await response.json()).error });
+          }
+          updateState({ loading: false });
+        }
+      });
+      subscribeLists((lists) => {
+        listsContainer.innerHTML = handlebars.templates["shortcut-list-container"]({
+          lists: lists.map((list) => ({
+            ...list,
+            shortcuts: list.shortcuts.map(({ title, url, icon, children }, i) => ({
+              id: i,
+              title,
+              url,
+              icon: icon || "https://s2.googleusercontent.com/s2/favicons?domain=" + url,
+              children,
+              hasChildren: children && children.length > 0
+            }))
+          }))
         });
-        Array.from(shortcutsContainer.querySelectorAll(".shortcut")).forEach(
+        Array.from(listsContainer.querySelectorAll(".shortcut")).forEach(
           (shortcut, i) => {
             shortcut.querySelector(".edit-actions .delete").addEventListener("click", () => {
               setShortcuts(getShortcuts().filter((_, j) => i !== j));
@@ -2551,32 +2902,20 @@
           }
         );
       });
-      shortcutsEdit.addEventListener("click", () => {
-        const shortcuts = Array.from(
-          shortcutsContainer.querySelectorAll(".shortcut")
-        );
-        if (!isEditing) {
-          isEditing = true;
-          shortcuts.forEach((shortcut) => shortcut.classList.add("editing"));
-          return;
-        }
-        isEditing = false;
-        shortcuts.forEach((shortcut) => shortcut.classList.remove("editing"));
-      });
       var changeOrder = (arr, m, n) => {
         const newArr = [...arr];
         const [item] = newArr.splice(m, 1);
         newArr.splice(n, 0, item);
         return newArr;
       };
-      sortable.create(shortcutsContainer, {
+      sortable.create(listsContainer, {
         animation: 150,
         ghostClass: "ghost-draggable",
         onEnd: (e) => {
           setShortcuts(changeOrder(getShortcuts(), e.oldIndex, e.newIndex));
         }
       });
-      module.exports = { getShortcuts, setShortcuts, subscribeShortcuts };
+      module.exports = { getLists, setLists, subscribeLists };
     }
   });
 
@@ -2647,165 +2986,12 @@
     }
   });
 
-  // pages/newtab/scripts/tabs.js
-  var require_tabs = __commonJS({
-    "pages/newtab/scripts/tabs.js"(exports, module) {
-      var tabListeners = {};
-      var setupTabs = (scope) => {
-        const tabs = scope.querySelectorAll("[data-tab-container]");
-        Array.from(tabs || []).forEach((tabContainer) => {
-          const tabButtons = Array.from(
-            tabContainer.querySelectorAll(".tabs button") || []
-          );
-          const tabs2 = Array.from(tabContainer.querySelectorAll(".tab") || []);
-          tabs2.forEach((tab) => tab.classList.add("hide"));
-          tabButtons.forEach((button) => {
-            const tab = tabs2.find((tab2) => tab2.dataset.tab === button.dataset.tab);
-            if (button.classList.contains("active")) {
-              tab.classList.remove("hide");
-            }
-            if (!tab) {
-              console.error("no related tab found", button.dataset.tab, tabContainer);
-              return;
-            }
-            button.addEventListener("click", () => {
-              tabButtons.forEach((button2) => button2.classList.remove("active"));
-              button.classList.add("active");
-              tabs2.forEach((tab2) => tab2.classList.add("hide"));
-              tab.classList.remove("hide");
-              tabListeners[tabContainer.dataset.tabContainer]?.[button.dataset.tab]?.();
-            });
-          });
-        });
-      };
-      var removeTabs = (scope) => {
-        const tabs = scope.querySelectorAll("[data-tab-container]");
-        Array.from(tabs || []).forEach((tabContainer) => {
-          delete tabListeners[tabContainer.dataset.tabContainer];
-        });
-      };
-      var listenToTab = (id, tab, fn) => {
-        if (!tabListeners[id]) {
-          tabListeners[id] = {};
-        }
-        tabListeners[id][tab] = fn;
-      };
-      setupTabs(document);
-      module.exports = { listenToTab, setupTabs, removeTabs };
-    }
-  });
-
-  // pages/newtab/scripts/dynamic.js
-  var require_dynamic = __commonJS({
-    "pages/newtab/scripts/dynamic.js"(exports, module) {
-      var querySelector = (selector, scope = document) => (fn) => {
-        const element = scope.querySelector(selector);
-        if (element)
-          return fn(element);
-        return null;
-      };
-      async function observeElementChanges(fn) {
-        const result = fn();
-        if (result)
-          return result;
-        await new Promise((resolve) => requestAnimationFrame(resolve));
-        return observeElementChanges(fn);
-      }
-      module.exports = { querySelector, observeElementChanges };
-    }
-  });
-
-  // pages/newtab/scripts/forms.js
-  var require_forms = __commonJS({
-    "pages/newtab/scripts/forms.js"(exports, module) {
-      var formValues = {};
-      var setupForms = (scope) => {
-        const forms = scope.querySelectorAll("[data-form]");
-        Array.from(forms || []).forEach((form) => {
-          const formName = form.id;
-          formValues[formName] = { values: {} };
-          Array.from(form.querySelectorAll("input, textarea, select")).forEach(
-            (input) => {
-              formValues[formName].values[input.name] = input.value;
-              input.addEventListener("change", (e) => {
-                formValues[formName].values[input.name] = e.target.value;
-              });
-            }
-          );
-          const defaultValues = { ...formValues[formName].values };
-          formValues[formName].reset = () => {
-            formValues[formName].values = { ...defaultValues };
-          };
-        });
-      };
-      var removeForms = (scope) => {
-        const forms = scope.querySelectorAll("[data-form]");
-        Array.from(forms || []).forEach((form) => {
-          const formName = form.id;
-          delete formValues[formName];
-        });
-      };
-      var stopPropagation = (fn) => (e) => {
-        e.stopPropagation();
-        if (fn) {
-          fn(e);
-        }
-      };
-      var preventDefault = (fn) => (e) => {
-        e.preventDefault();
-        if (fn) {
-          fn(e);
-        }
-      };
-      setupForms(document);
-      module.exports = {
-        formValues,
-        stopPropagation,
-        preventDefault,
-        setupForms,
-        removeForms
-      };
-    }
-  });
-
-  // pages/newtab/scripts/modal.js
-  var require_modal = __commonJS({
-    "pages/newtab/scripts/modal.js"(exports, module) {
-      var { observeElementChanges } = require_dynamic();
-      var { setupForms, removeForms, stopPropagation } = require_forms();
-      var { setupTabs } = require_tabs();
-      var modalBackdrop = document.querySelector("#backdrop");
-      var showModal = async (template) => {
-        modalBackdrop.innerHTML = template;
-        const modal = await observeElementChanges(
-          () => modalBackdrop.querySelector("[data-modal]")
-        );
-        setupTabs(modalBackdrop);
-        setupForms(modalBackdrop);
-        modal.addEventListener("click", stopPropagation());
-        modalBackdrop.classList.remove("hide");
-        modal.classList.remove("hide");
-        modalBackdrop.addEventListener("click", hideModal, { once: true });
-      };
-      var hideModal = async () => {
-        modalBackdrop.innerHTML = "";
-        modalBackdrop.classList.add("hide");
-        removeForms(modalBackdrop);
-      };
-      module.exports = { showModal, hideModal, modalBackdrop };
-    }
-  });
-
   // pages/newtab/scripts/add-shortcuts.js
   var require_add_shortcuts = __commonJS({
-    "pages/newtab/scripts/add-shortcuts.js"() {
-      var { listenToTab } = require_tabs();
-      var { showModal, hideModal } = require_modal();
-      var { getShortcuts, setShortcuts } = require_shortcuts();
-      var { formValues, preventDefault } = require_forms();
+    "pages/newtab/scripts/add-shortcuts.js"(exports, module) {
       var handlebars = require_handlebars();
       var shortcutAddButton = document.querySelector("#shortcuts-add");
-      shortcutAddButton.addEventListener("click", async () => {
+      var showAddShortcut = async () => {
         await showModal(handlebars.templates["add-shortcut-modal"]());
         const addShortcutModalForm = document.querySelector("#add-shortcut-form");
         const addShortcutModalRelatedForm = document.querySelector(
@@ -2819,49 +3005,8 @@
           "submit",
           preventDefault(addShortcut("related"))
         );
-      });
-      listenToTab("add-shortcut", "link", () => {
-        const shortcutsSelector = document.querySelector("#shortcut-related");
-        shortcutsSelector.innerHTML = [
-          '<option disabled value=""></option>',
-          ...getShortcuts().map(
-            ({ title, link }) => `<option value="${link}">${title}</option>`
-          )
-        ];
-        shortcutsSelector.value = "";
-      });
-      var addShortcut = (mode = "") => () => {
-        const formName = mode === "related" ? "add-shortcut-form-related" : "add-shortcut-form";
-        const emptyFields = Object.keys(formValues[formName].values).filter(
-          (key) => key !== "icon" && formValues[formName].values[key] === ""
-        );
-        if (emptyFields.length > 0) {
-          emptyFields.forEach((field) => {
-            const input = document.querySelector(`#${formName} [name="${field}"]`);
-            input.classList.add("error");
-          });
-          return;
-        }
-        if (mode === "related") {
-          const shortcuts = getShortcuts();
-          const shortcut = shortcuts.find(
-            (shortcut2) => shortcut2.link === formValues["add-shortcut-form-related"].values.parent
-          );
-          if (!shortcut) {
-            throw new Error("Shortcut not found");
-          }
-          shortcut.children.push(formValues["add-shortcut-form-related"].values);
-          setShortcuts(shortcuts);
-        } else {
-          setShortcuts([
-            ...getShortcuts(),
-            { ...formValues["add-shortcut-form"].values, children: [] }
-          ]);
-        }
-        formValues["add-shortcut-form-related"].reset();
-        formValues["add-shortcut-form"].reset();
-        hideModal();
       };
+      module.exports = { showAddShortcut };
     }
   });
 
@@ -4558,17 +4703,20 @@
   var require_search = __commonJS({
     "pages/newtab/scripts/search.js"() {
       var Fuse = require_fuse_common();
-      var { formValues, preventDefault } = require_forms();
+      var { formValues, preventDefault: preventDefault2 } = require_forms();
       var { getBookmarks, subscribeBookmarks } = require_bookmarks();
-      var { getShortcuts, subscribeShortcuts } = require_shortcuts();
+      var { getLists, subscribeLists } = require_shortcuts();
       var searchEverythingContainer = document.querySelector("#search-everything");
       var searchInput = document.querySelector("#search-form input[name=search]");
       var searchForm = document.querySelector("#search-form");
       var getSearchOptions = () => searchEverythingContainer.querySelectorAll(".search-option");
       var updateSearchData = () => {
         const bookmarks = flattenData(getBookmarks());
-        const shortcuts = flattenData(getShortcuts());
-        searchEverythingContainer.innerHTML = [...bookmarks, ...shortcuts].map(
+        const lists = flattenData(getLists());
+        searchEverythingContainer.innerHTML = [
+          ...bookmarks,
+          ...lists.map((list) => list.shortcuts).flat(1)
+        ].map(
           (data) => `<div class="search-option" data-value="${data.link}" data-title="${data.title}"><h3>${data.title}</h3><h4>${data.link}</h4></div>`
         ).join("");
         Array.from(getSearchOptions()).forEach((option) => {
@@ -4751,135 +4899,10 @@
         const urlRegex = /^(?:(?:https?|ftp):\/\/)?(?:www\.)?[^\s\/]+\.[^\s\/]+/;
         return urlRegex.test(str);
       }
-      searchForm.addEventListener("submit", preventDefault(search));
+      searchForm.addEventListener("submit", preventDefault2(search));
       searchInput.focus();
       subscribeBookmarks(updateSearchData);
-      subscribeShortcuts(updateSearchData);
-    }
-  });
-
-  // pages/newtab/scripts/auth.js
-  var require_auth = __commonJS({
-    "pages/newtab/scripts/auth.js"(exports, module) {
-      var { showModal, modalBackdrop, hideModal } = require_modal();
-      var { store } = require_store();
-      var handlebars = require_handlebars();
-      var { querySelector } = require_dynamic();
-      var { preventDefault, formValues } = require_forms();
-      var loginButton = document.querySelector("#menu");
-      var loginForm = querySelector("#login-form", modalBackdrop);
-      var registerForm = querySelector("#register-form", modalBackdrop);
-      var registerNavigateButton = querySelector("#register-button", modalBackdrop);
-      var loginNavigateButton = querySelector("#login-button", modalBackdrop);
-      var proceedNavigationButton = querySelector("#proceed", modalBackdrop);
-      var backNavigationButton = querySelector("#back", modalBackdrop);
-      var {
-        get: getUser,
-        set: setUser,
-        subscribe: subscribeUser
-      } = store({ uuid: "", username: "", token: "" }, "user");
-      var {
-        get: getRequestState,
-        set: setRequestState,
-        update: updateRequestState,
-        subscribe: subscribeRequestState
-      } = store({
-        isShowingModal: false,
-        loading: false,
-        error: "",
-        uuid: "",
-        createdAccount: false,
-        isCreatingAccount: false,
-        isLoggingIn: false
-      });
-      subscribeRequestState(async (state) => {
-        if (!state.isShowingModal) {
-          hideModal();
-          return;
-        }
-        hideModal();
-        await showModal(handlebars.templates["auth-modal"](state));
-        loginNavigateButton(
-          (node) => node.addEventListener(
-            "click",
-            () => setRequestState({ isShowingModal: true, isLoggingIn: true })
-          )
-        );
-        registerNavigateButton(
-          (node) => node.addEventListener(
-            "click",
-            () => setRequestState({ isShowingModal: true, isCreatingAccount: true })
-          )
-        );
-        proceedNavigationButton(
-          (node) => node.addEventListener(
-            "click",
-            () => setRequestState({ isShowingModal: false })
-          )
-        );
-        backNavigationButton(
-          (node) => node.addEventListener(
-            "click",
-            () => setRequestState({
-              isShowingModal: true
-            })
-          )
-        );
-        loginForm(
-          (node) => node.addEventListener("submit", preventDefault(loginUser))
-        );
-        registerForm(
-          (node) => node.addEventListener("submit", preventDefault(registerUser))
-        );
-      });
-      loginButton.addEventListener("click", async () => {
-        setRequestState({ isShowingModal: true });
-      });
-      var loginUser = async () => {
-        updateRequestState({ loading: true, error: "" });
-        const { username, password } = formValues["login-form"].values;
-        const response = await fetch(`${"http://localhost:3000/api/v1"}/auth/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            username,
-            password
-          })
-        });
-        if (response.ok) {
-          const { uuid, token } = await response.json();
-          setRequestState({ isShowingModal: false });
-          setUser({ uuid, username, token });
-        } else {
-          updateRequestState({ error: (await response.json()).error });
-        }
-        updateRequestState({ loading: false });
-      };
-      var registerUser = async () => {
-        updateRequestState({ loading: true, error: "" });
-        const { username, password } = formValues["register-form"].values;
-        const response = await fetch(`${"http://localhost:3000/api/v1"}/auth/register`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            username,
-            password
-          })
-        });
-        if (response.ok) {
-          const { uuid, token } = await response.json();
-          setUser({ uuid, username, token });
-          updateRequestState({ createdAccount: true, uuid });
-        } else {
-          updateRequestState({ error: (await response.json()).error });
-        }
-        updateRequestState({ loading: false });
-      };
-      module.exports = { subscribeUser };
+      subscribeLists(updateSearchData);
     }
   });
 

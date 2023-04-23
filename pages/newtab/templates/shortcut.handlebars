@@ -1,11 +1,11 @@
 <div class="shortcut" data-id="{{id}}">
   {{#if hasChildren}}
-  <a href="https://{{link}}">
+  <a href="{{url}}">
     <div class="header">
       <img src="{{icon}}" />
       <div class="title">
         <h1>{{title}}</h1>
-        <h3>https://{{link}}</h3>
+        <h3>{{url}}</h3>
       </div>
     </div>
   </a>
@@ -18,10 +18,10 @@
     {{/each}}
   </div>
   {{else}}
-  <a href="https://{{link}}">
+  <a href="{{url}}">
     <div>
       <h1>{{title}}</h1>
-      <h3>https://{{link}}</h3>
+      <h3>{{url}}</h3>
     </div>
   </a>
   <div class="img">

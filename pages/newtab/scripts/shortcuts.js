@@ -2,35 +2,62 @@ const sortable = require("sortablejs");
 
 const handlebars = require("./handlebars");
 const { store } = require("./store");
-const { shortcutsDefault } = require("./constants");
+const { listsDefault } = require("./constants");
+const { subscribeUser } = require("./auth");
 
-const shortcutsContainer = document.querySelector("#shortcuts");
+const listsContainer = document.querySelector("#lists");
 const shortcutsEdit = document.querySelector("#shortcuts-edit");
 
 const {
-  get: getShortcuts,
-  set: setShortcuts,
-  subscribe: subscribeShortcuts,
-} = store(shortcutsDefault, "shortcuts");
+  get: getLists,
+  set: setLists,
+  subscribe: subscribeLists,
+} = store(listsDefault, "lists");
 
-let isEditing = false;
+const {
+  get: getState,
+  set: setState,
+  update: updateState,
+  subscribe: subscribeState,
+} = store({ isEditing: false, loading: false, error: "" });
 
-subscribeShortcuts((shortcuts) => {
-  shortcutsContainer.innerHTML = "";
-  isEditing = false;
-  shortcuts.forEach(({ title, link, icon, children }, i) => {
-    shortcutsContainer.innerHTML += handlebars.templates.shortcut({
-      id: i,
-      title,
-      icon:
-        icon || "https://s2.googleusercontent.com/s2/favicons?domain=" + link,
-      children,
-      hasChildren: children && children.length > 0,
-      link: link.replace(/^https?:\/\//, ""),
+subscribeUser(async (user) => {
+  if (user.uuid) {
+    setState({ loading: true });
+    const response = await fetch(`${process.env.API_URL}/users`, {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+        "Content-Type": "application/json",
+      },
     });
+
+    if (response.ok) {
+      const { lists } = await response.json();
+      setLists(lists);
+    } else {
+      updateState({ error: (await response.json()).error });
+    }
+    updateState({ loading: false });
+  }
+});
+
+subscribeLists((lists) => {
+  listsContainer.innerHTML = handlebars.templates["shortcut-list-container"]({
+    lists: lists.map((list) => ({
+      ...list,
+      shortcuts: list.shortcuts.map(({ title, url, icon, children }, i) => ({
+        id: i,
+        title,
+        url,
+        icon:
+          icon || "https://s2.googleusercontent.com/s2/favicons?domain=" + url,
+        children,
+        hasChildren: children && children.length > 0,
+      })),
+    })),
   });
 
-  Array.from(shortcutsContainer.querySelectorAll(".shortcut")).forEach(
+  Array.from(listsContainer.querySelectorAll(".shortcut")).forEach(
     (shortcut, i) => {
       shortcut
         .querySelector(".edit-actions .delete")
@@ -41,21 +68,6 @@ subscribeShortcuts((shortcuts) => {
   );
 });
 
-shortcutsEdit.addEventListener("click", () => {
-  const shortcuts = Array.from(
-    shortcutsContainer.querySelectorAll(".shortcut")
-  );
-
-  if (!isEditing) {
-    isEditing = true;
-    shortcuts.forEach((shortcut) => shortcut.classList.add("editing"));
-    return;
-  }
-
-  isEditing = false;
-  shortcuts.forEach((shortcut) => shortcut.classList.remove("editing"));
-});
-
 const changeOrder = (arr, m, n) => {
   const newArr = [...arr];
   const [item] = newArr.splice(m, 1);
@@ -63,7 +75,7 @@ const changeOrder = (arr, m, n) => {
   return newArr;
 };
 
-sortable.create(shortcutsContainer, {
+sortable.create(listsContainer, {
   animation: 150,
   ghostClass: "ghost-draggable",
   onEnd: (e) => {
@@ -71,4 +83,4 @@ sortable.create(shortcutsContainer, {
   },
 });
 
-module.exports = { getShortcuts, setShortcuts, subscribeShortcuts };
+module.exports = { getLists, setLists, subscribeLists };
