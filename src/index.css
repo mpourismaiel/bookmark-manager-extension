@@ -9,19 +9,19 @@ button:active {
 .separator {
   --separator-gap: 1rem;
   @apply flex items-center text-sm my-4 text-gray-200;
-}
 
-.separator::before, .separator::after {
-  content: '';
-  @apply flex-grow h-px bg-gray-500;
-}
+  &::before, &::after {
+    content: '';
+    @apply flex-grow h-px bg-gray-500;
+  }
 
-.separator::before {
-  margin-right: var(--separator-gap);
-}
+  &::before {
+    margin-right: var(--separator-gap);
+  }
 
-.separator::after {
-  margin-left: var(--separator-gap);
+  &::after {
+    margin-left: var(--separator-gap);
+  }
 }
 
 body {

@@ -4,22 +4,22 @@ export const listsDefault = [
     shortcuts: [
       {
         title: "Reddit",
-        url: "reddit.com",
+        url: "https://reddit.com",
         children: [],
       },
       {
         title: "Github",
-        url: "github.com",
+        url: "https://github.com",
         children: [],
       },
       {
         title: "30nama",
-        url: "30nama.com",
+        url: "https://30nama.com",
         children: [],
       },
       {
         title: "Youtube",
-        url: "youtube.com",
+        url: "https://youtube.com",
         children: [],
       },
     ],
